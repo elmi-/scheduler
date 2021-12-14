@@ -17,9 +17,10 @@ export default function useVisualMode(initial) {
 
   function back() {
     const newHistory = [...history];
-    // if (newHistory.length < 2) {
-    //   return;
-    // }
+
+    if (newHistory.length === 1) {
+      return newHistory;
+    }
 
     let popVal = newHistory.pop();
 
@@ -29,8 +30,6 @@ export default function useVisualMode(initial) {
     
     setHistory(newHistory);
     setMode(popVal);
-
-
   }
 
   return { mode, transition, back };

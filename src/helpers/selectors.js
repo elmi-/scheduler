@@ -22,7 +22,7 @@ export function getInterviewersForDay(state, day) {
       })
     }
   })
-  console.log(interviewerArr)
+
   return interviewerArr;
 }
 
