@@ -12,6 +12,22 @@ export function getAppointmentsForDay(state, day) {
   return appointmentArr;
 }
 
+export function getInterviewersForDay(state, day) {
+  const interviewerArr = [];
+  
+  state.days.forEach(sDay => {
+    if (sDay.name === day) {
+      sDay.interviewers.forEach(intId => {
+        interviewerArr.push(state.interviewers[intId])
+      })
+    }
+  })
+  console.log(interviewerArr)
+  return interviewerArr;
+}
+
+
+
 export function getInterview(state, interview) {
   if (!interview) {
     return null;
