@@ -67,7 +67,7 @@ function onSave(name, interviewer) {
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SHOW && <Show student={props.interview.student} interviewer={props.interview.interviewer} onDelete={ onDelete } onEdit={ onEdit } />}
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={ onSave} />}
-      {mode === EDIT && <Form interviewers={props.interviewers } interviewer={props.interview.interviewer.id } student={props.interview.student} onCancel={() => back()} onSave={ onSave} onEdit={ onSave } />}
+      {mode === EDIT && <Form interviewers={props.interviewers } interviewer={ props.interview.interviewer ? props.interview.interviewer.id : null } student={props.interview.student} onCancel={() => back()} onSave={ onSave} onEdit={ onSave } />}
       {mode === SAVING && <Status message={"Saving"} />}
       {mode === ERROR_DELETE && <Status message={"Error deleteing appointment"} />}
       {mode === ERROR_DELETE && <Status message={"Error saving appointment"} />}
