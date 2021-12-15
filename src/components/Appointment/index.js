@@ -16,6 +16,8 @@ const SAVING = "SAVING";
 const DELETE = "DELETE";
 const DELETE_CONFIRM = "DELETE_CONFIRM";
 const EDIT = "EDIT";
+const ERROR_SAVE = "ERROR_SAVE";
+const ERROR_DELETE = "ERROR_DELETE"
 
 const Appointment = (props)  => {
   const { mode, transition, back } = useVisualMode(
@@ -33,19 +35,25 @@ function onSave(name, interviewer) {
   props.bookInterview(props.id, interview)
     .then(() => { 
       transition(SHOW);
-    });  
+    })
+    .catch((err) => {
+      transition(ERROR_SAVE, true);
+    })
 }
   const onDelete = (id) =>  {
     transition(DELETE);
   } 
 
   const onDeleteConfirm = (id) =>  {
-    transition(DELETE_CONFIRM);
+    transition(DELETE_CONFIRM, true);
 
     props.cancelAppointment(props.id) 
       .then(() => { 
         transition(EMPTY);
-      });  
+      })
+      .catch((err) => {
+        transition(ERROR_DELETE, true);
+      })
   } 
 
   const onEdit = () => {
@@ -61,6 +69,8 @@ function onSave(name, interviewer) {
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={ onSave} />}
       {mode === EDIT && <Form interviewers={props.interviewers } interviewer={props.interview.interviewer.id } student={props.interview.student} onCancel={() => back()} onSave={ onSave} onEdit={ onSave } />}
       {mode === SAVING && <Status message={"Saving"} />}
+      {mode === ERROR_DELETE && <Status message={"Error deleteing appointment"} />}
+      {mode === ERROR_DELETE && <Status message={"Error saving appointment"} />}
       {mode === DELETE_CONFIRM && <Status message={"Deleting"} />}
       {mode === DELETE && <Confirm message={"Are you sure you would like to delete?"} onCancel={() => back()} onConfirm={ onDeleteConfirm } />}
     </article> 
