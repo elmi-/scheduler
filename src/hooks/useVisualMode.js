@@ -18,8 +18,8 @@ export default function useVisualMode(initial) {
   function back() {
     const newHistory = [...history];
 
-    if (newHistory.length === 1) {
-      return newHistory;
+    if (newHistory.length < 2) {
+      return newHistory[0];
     }
 
     let popVal = newHistory.pop();

@@ -70,6 +70,20 @@ export default function Application(props) {
     });
   }
 
+  const cancelAppointment = (id) => {
+    console.log(id);
+    return axios.delete(`http://localhost:8001/api/appointments/${ id }`)
+    .then((res) => {
+      // setState({
+      //   ...state,
+      //   appointments
+      // });
+    })
+    .catch((err) => {
+      console.log(err.message);
+    });
+  };
+
     return (
       <Appointment
         key={appointment.id}
@@ -78,6 +92,7 @@ export default function Application(props) {
         interviewers={interviewers}
         interview={interview}
         bookInterview={bookInterview}
+        cancelAppointment={cancelAppointment}
       />
     );
   });
