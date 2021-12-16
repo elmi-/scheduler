@@ -21,7 +21,6 @@ export default function useApplicationData () {
     },[]);
      
     const setDay = day => setState({ ...state, day });
-    const setDays = days =>   setState(prev => ({ ...prev, days }));
     
     const cancelAppointment = (id) => {
       const appointment = {
