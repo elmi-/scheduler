@@ -9,7 +9,7 @@ describe("appointments", () => {
    });
   
    // BOOKING
-   xit("should book an interview", () => {
+   it("should book an interview", () => {
     // clicks the "Add" button in the second appointment
     cy.get("[alt=Add]")
      .first()
@@ -29,7 +29,7 @@ describe("appointments", () => {
    });
 
    // EDITING
-   xit("should edit an interview", () => {
+   it("should edit an interview", () => {
     cy.get("[alt=Edit]")
     .first()
     .click({ force: true });
