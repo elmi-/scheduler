@@ -17,11 +17,11 @@ Data is presisted by an API server using a PostgreSQL database.
 - When the user presses the close button of the error they are returned to the Form or Show view (skipping Status and Confirm).
 - The application makes API requests to load and persist data. We do not lose data after a browser refresh.
 ## Screenshots 
-![default view on desktop]()
+![default view on desktop](https://github.com/elmi-/scheduler/blob/master/docs/default-screen.PNG?raw=true)
 
-![creating a new appointment]()
+![creating a new appointment](https://github.com/elmi-/scheduler/blob/master/docs/new-appointment-form.PNG?raw=true)
 
-![deleteing an appointment]()
+![deleteing an appointment](https://github.com/elmi-/scheduler/blob/master/docs/delete-appointment.PNG?raw=true)
 ## Setup
 
 Install dependencies with `npm install`.
