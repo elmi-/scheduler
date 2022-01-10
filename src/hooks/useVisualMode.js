@@ -13,7 +13,7 @@ export default function useVisualMode(initial) {
 
     newHistory.push(mode);
     setMode(mode);
-    setHistory(newHistory);
+    setHistory(prev => ([...prev, newHistory]));
   }
 
   function back() {
@@ -22,7 +22,7 @@ export default function useVisualMode(initial) {
     if (newHistory.length > 1) {
       newHistory.pop();
       setMode(newHistory[newHistory.length - 1]);
-      setHistory([...newHistory]);
+      setHistory(prev => ([...prev, ...newHistory]));
   }
 }
 

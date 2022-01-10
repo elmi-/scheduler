@@ -8,6 +8,7 @@ import Empty from "./Empty";
 import Form from "./Form"
 import Status from "./Status";
 import Confirm from "./Confirm ";
+import Error from "./Error"
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -69,8 +70,8 @@ function onSave(name, interviewer) {
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={ onSave} />}
       {mode === EDIT && <Form interviewers={props.interviewers } interviewer={ props.interview.interviewer ? props.interview.interviewer.id : null } student={props.interview.student} onCancel={() => back()} onSave={ onSave} onEdit={ onSave } />}
       {mode === SAVING && <Status message={"Saving"} />}
-      {mode === ERROR_DELETE && <Status message={"Error deleteing appointment"} />}
-      {mode === ERROR_DELETE && <Status message={"Error saving appointment"} />}
+      {mode === ERROR_DELETE && <Error message={"Error deleteing appointment"} onClose={ back } />}
+      {mode === ERROR_SAVE && <Error message={"Error saving appointment"} onClose={ back } />}
       {mode === DELETE_CONFIRM && <Status message={"Deleting"} />}
       {mode === DELETE && <Confirm message={"Are you sure you would like to delete?"} onCancel={() => back()} onConfirm={ onDeleteConfirm } />}
     </article> 

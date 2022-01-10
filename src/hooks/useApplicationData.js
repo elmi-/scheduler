@@ -44,9 +44,9 @@ export default function useApplicationData () {
           days: nDays
         });
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      // .catch((err) => {
+      //   // console.log(err.message);
+      // });
     };
 
     function bookInterview(id, interview) {      
@@ -72,9 +72,9 @@ export default function useApplicationData () {
           days: nDays
         });
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+      // .catch((err) => {
+      //   console.log(err.message);
+      // });
     };
 
   return {
