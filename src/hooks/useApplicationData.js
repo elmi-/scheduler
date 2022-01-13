@@ -23,8 +23,6 @@ export default function useApplicationData () {
     },[]);
      
     const setDay = day => setState({ ...state, day });
-    
-    console.log("state information from useAppData++++++++++++++", state.appointments);
 
     const cancelAppointment = (id) => {
       const appointment = {
@@ -57,8 +55,6 @@ export default function useApplicationData () {
       };
     
       let isEdit = state.appointments[id].interview;
-
-      console.log("!!!!", isEdit)
 
       const appointments = {
         ...state.appointments,

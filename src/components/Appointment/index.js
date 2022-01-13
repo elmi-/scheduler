@@ -57,10 +57,21 @@ function onSave(name, interviewer) {
       })
   } 
 
+  const onDeleteError = () => {
+    transition(SHOW);
+  }
+
+  const onSaveError = () => {
+    transition(EMPTY)
+  }
+
   const onEdit = () => {
     transition(EDIT);
   }
 
+  React.useEffect(() => {
+    console.log("inedx!!!", mode);
+  }, [mode])
 
   return (
     <article className="appointment">
@@ -70,8 +81,8 @@ function onSave(name, interviewer) {
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={() => back()} onSave={ onSave} />}
       {mode === EDIT && <Form interviewers={props.interviewers } interviewer={ props.interview.interviewer ? props.interview.interviewer.id : null } student={props.interview.student} onCancel={() => back()} onSave={ onSave} onEdit={ onSave } />}
       {mode === SAVING && <Status message={"Saving"} />}
-      {mode === ERROR_DELETE && <Error message={"Error deleteing appointment"} onClose={ back } />}
-      {mode === ERROR_SAVE && <Error message={"Error saving appointment"} onClose={ back } />}
+      {mode === ERROR_SAVE && <Error message={"Error saving appointment"} onClose={ onSaveError } />}
+      {mode === ERROR_DELETE && <Error message={"Error deleteing appointment"} onClose={ onDeleteError } />}
       {mode === DELETE_CONFIRM && <Status message={"Deleting"} />}
       {mode === DELETE && <Confirm message={"Are you sure you would like to delete?"} onCancel={() => back()} onConfirm={ onDeleteConfirm } />}
     </article> 
