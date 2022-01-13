@@ -28,7 +28,7 @@ test("useVisualMode should return to previous mode", () => {
   expect(result.current.mode).toBe(THIRD);
 
   act(() => result.current.back());
-  expect(result.current.mode).toBe(SECOND);
+  expect(result.current.mode.reverse()[0]).toBe(SECOND);
 
   act(() => result.current.back());
   expect(result.current.mode).toBe(FIRST);
@@ -52,5 +52,5 @@ test("useVisualMode should replace the current mode", () => {
   expect(result.current.mode).toBe(THIRD);
 
   act(() => result.current.back());
-  expect(result.current.mode).toBe(FIRST);
-});
+  expect(result.current.mode[0]).toBe(FIRST);
+}); 
