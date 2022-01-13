@@ -9,6 +9,8 @@ export default function useApplicationData () {
       interviewers: []
     });
     
+    
+
     useEffect(() => {
       Promise.all([
         axios.get('http://localhost:8001/api/days'),
@@ -22,6 +24,8 @@ export default function useApplicationData () {
      
     const setDay = day => setState({ ...state, day });
     
+    console.log("state information from useAppData++++++++++++++", state.appointments);
+
     const cancelAppointment = (id) => {
       const appointment = {
         ...state.appointments[id],
@@ -44,9 +48,6 @@ export default function useApplicationData () {
           days: nDays
         });
       })
-      // .catch((err) => {
-      //   // console.log(err.message);
-      // });
     };
 
     function bookInterview(id, interview) {      
@@ -55,14 +56,22 @@ export default function useApplicationData () {
         interview: { ...interview }
       };
     
+      let isEdit = state.appointments[id].interview;
+
+      console.log("!!!!", isEdit)
+
       const appointments = {
         ...state.appointments,
         [id]: appointment
       };
 
+      let nDays = [ ...state.days ]
+
       const cDay = state.days.find(day => day.appointments.includes(id))
       const nDay = {...cDay, spots: cDay.spots-1}
-      const nDays =  state.days.map((day) => {return day.name === state.day ? nDay: day})
+      if (!isEdit) {
+        nDays = state.days.map((day) => {return day.name === state.day ? nDay: day})
+      }       
 
       return axios.put(`http://localhost:8001/api/appointments/${ id }`, { interview })
       .then((res) => {
@@ -72,9 +81,6 @@ export default function useApplicationData () {
           days: nDays
         });
       })
-      // .catch((err) => {
-      //   console.log(err.message);
-      // });
     };
 
   return {
