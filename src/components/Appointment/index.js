@@ -62,7 +62,7 @@ function onSave(name, interviewer) {
   }
 
   const onSaveError = () => {
-    transition(EDIT)
+    transition(SHOW)
   }
 
   const onEdit = () => {
