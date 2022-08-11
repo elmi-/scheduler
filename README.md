@@ -1,6 +1,6 @@
 # Interview Scheduler
-Single page application called Interview Scheduler, built using React! 
-Data is presisted by an API server using a PostgreSQL database. 
+Scheduling application used for booking interviews, that is dynamically rendered
+using React! Data is persisted by an API server using a PostgreSQL database.
 
 ## Features
 - Interviews can be booked between Monday and Friday.
